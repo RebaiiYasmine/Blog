@@ -1,0 +1,18 @@
+<div class=" h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 place-content-center">  <div class="place-content-center">
+  <div class="flex justify-center p-40">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 place-content-center ">
+      <div class="mb-4 place-content-center ">
+        <h1 class="text-lg font-medium text-center mt-4 place-content-center "><%= @user.userName %></h1>
+      </div>
+      <div class="mb-4 place-content-center ">
+      
+        <p class="text-gray-700 text-base"> <%= @user.email %></p>
+        <p class="text-gray-700 text-base">Nombre de publications: <%= @posts.count %></p>
+        <p class="text-gray-700 text-base">Nombre d'abonnés: <%= @user.followers.count %></p>
+        <p class="text-gray-700 text-base">Nombre d'abonnements: <%= @user.followees.count %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

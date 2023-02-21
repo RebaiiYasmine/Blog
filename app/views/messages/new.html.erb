@@ -1,0 +1,16 @@
+<div class="absolute  top-0 w-full h-screen bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+  <h1 class="text-6xl text-center text-white  font-black ">Nouveau Message</h1>
+  <div class="bg-white mt-32 dark:bg-slate-900 rounded-lg px-5 py-14 ring-1 ring-slate-900/5 shadow-xl m-auto w-fit">
+    <%= form_with model: @message, local: true do |form| %>
+      <div>
+        <%= form.label :message %><br>
+        
+        <%= form.text_area :body ,class:"mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"%>
+      </div>
+      <%= form.hidden_field :user_id, value: current_user.message_id %>
+      <div>
+        <%= form.submit "Créer",class:"bg-sky-500 hover:bg-sky-700 text-white  mt-2 p-2 float-right rounded-md" %>
+      </div>
+    <% end %>
+  </div>
+</div>

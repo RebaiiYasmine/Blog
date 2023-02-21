@@ -1,0 +1,38 @@
+  <div class="absolute -z-10 top-0 w-full h-screen bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+    <div class="text-2xl font-bold mb-4 text-blue-500">
+      New Post
+    
+     <div class="bg-white mt-32 dark:bg-slate-900 rounded-lg px-5 py-14 ring-1 ring-slate-900/5 shadow-xl m-auto w-fit">
+
+      <%= form_with(model: @post, url: posts_path, method: :post) do |form| %>
+        <div class="text-2xl font-bold mb-4 text-blue-500">
+            <%= form.label :titre %><br>
+            <%= form.text_field :titre %>
+            <% if @post.errors.any? %>
+              <% @post.errors.full_messages.each do |message| %>
+                <div><%= message %></div>
+              <% end %>
+            <% end %> 
+        </div>
+
+
+        <div class="text-2xl font-bold mb-4 text-blue-500">
+          <%= form.label :image %><br>
+          <%= form.file_field :image %>
+          <% @post.errors.full_messages_for(:body).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+
+        <% if @post.persisted? %>
+          <%= link_to "Cancel", posts_path, class: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-blue-600" %>
+        <% end %>
+
+        <button class="rounded-full w-30 h-30 overflow-hidden border border-gray-400">
+          <div class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            <%= form.submit %>
+          </div>
+        </button>
+      <% end %>
+    </div>
+  </div> 

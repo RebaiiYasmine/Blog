@@ -1,0 +1,79 @@
+<body class="h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 place-content-center"></body>
+  <div class="flex justify-center p-40">
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 place-content-center ">
+      
+      <div class=" place-content-center flex items-center">
+      
+      
+        <p class="text-gray-700 text-base px-10	text-center">userName :
+          <br>
+        <%= @user.userName  %></p>
+          <br>
+        <p class="text-gray-700 text-base px-10	text-center">Nombre de publications :
+          <br>
+        <%= @posts.count %></p>
+        <br>
+        <p class="text-gray-700 text-base px-10	text-center	">Nombre d'abonnés:
+          <br>
+        <%= @user.followers.count %></p>
+        <br>
+        <p class="text-gray-700 text-base px-10	text-center	">Nombre d'abonnements :
+          <br>
+        <%= @user.followees.count %></p>
+      </div>
+      <div class="mb-4 place-content-center ">
+         <br>
+  
+        <% if current_user != @user %>
+          <%= button_to "Unfollow", unfollow_user_path(@user), data: { "turbo_method": :delete }, class: "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md mr-2"%>
+          <br>
+          <%= button_to "Follow", follow_user_path(@user), data: { "turbo_method": :post } , class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"  %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-auto w-fit ">
+   <div class="text-2xl font-bold mb-4 text-pink-500 w-fit m-auto">
+     <%= @user.userName %>'s Posts
+
+   <div class="list-none grid grid-cols-3 gap-4 mx-auto my-8 ">
+      <% @user.posts.each do |post| %>
+      <li class="bg-white rounded-lg shadow-lg">
+        <%= link_to post, class: "block w-full h-48 overflow-hidden" do %>
+          
+          <%= image_tag(post.image, class: "w-full h-full object-cover") %>
+        <% end %>
+        <div class="p-4">
+          <h2 class="text-lg font-bold text-gray-800 mb-2">
+            <%= link_to post.titre, post, class: "hover:text-pink-500" %>
+          </h2>
+        </div>
+      </li>
+
+    <% end %>
+    </div>
+  
+
+    <button class=" rounded-full w-30 h-30 overflow-hidden border border-gray-400 ">
+    <%= link_to "New Post", new_post_path, 
+    class: "bg-pink-500 text-white py-2 px-4 rounded hover:bg-blue-600" %>
+    </button>
+
+    <br>
+
+    <button class="bg-pink-500 text-white py-2 px-4 rounded hover:bg-blue-600 absolute bottom-0 right-0">
+      <%= link_to destroy_user_session_path, data: { "turbo_method": :delete } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+        </svg>
+        logout
+      <% end %>
+    </button> 
+  </div>
+  </div>
+  </div>
+</div>
+
+
+

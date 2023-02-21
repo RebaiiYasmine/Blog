@@ -1,0 +1,6 @@
+users number <%= @users.count %>
+<br>
+<% @users.each do |user| %>
+    <%= user.email %>  <%= user.id %>
+    <br>
+<% end %>

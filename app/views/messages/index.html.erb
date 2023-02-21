@@ -1,0 +1,21 @@
+<section class="px-10  absolute top-0 w-full h-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+    <h1 class="text-6xl text-center text-white  font-black mt-5 ">Liste des Messages</h1>
+    <div class="">
+      <div class="">
+        <div class="" >
+          <ul>
+            <% @messages.each do |message| %>
+              <li class=" bg-white  grid grid-flow-row auto-rows-max w-fit mx-auto my-8 py-5 px-10 rounded-xl  items-center text-center">
+                <p> <%= message.created_at%></p> <%= link_to message.body, message  %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+  <div>
+    <%= link_to "<", user_session_path ,class:"fixed absolute top-5 left-5 bg-slate-800  hover:bg-slate-400 hover:text-black text-white uppercase font-bold px-6 py-3 rounded-[50%] m-auto w-fit " %>
+  </div>
+<%= link_to new_message_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-10 m-10 rounded" do %>
+  Create New Message
+<% end %>
+</section>
